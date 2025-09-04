@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 8080
 
 # Comando de inicio
-CMD ["uvicorn", "mainAmbosFullTest:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "mainAmbosFullTest:app", "--bind", "0.0.0.0:8080"]
