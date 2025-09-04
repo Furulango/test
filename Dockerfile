@@ -2,7 +2,7 @@
 FROM python:3.10-slim
 
 # Instala las dependencias del sistema operativo para OpenCV Headless
-RUN apt-get update && apt-get install -y libgl1
+RUN apt-get update && apt-get install -y libgl1 libgthread-2.0-0
 
 # Crear directorio de trabajo
 WORKDIR /app
