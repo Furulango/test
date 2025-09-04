@@ -20,11 +20,7 @@
             --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -35,295 +31,60 @@
             flex-direction: column;
         }
 
-        /* Header Styles */
-        .header {
-            background-color: var(--surface);
-            box-shadow: var(--shadow-subtle);
-            border-bottom: 1px solid var(--border-light);
-        }
+        .header { background-color: var(--surface); box-shadow: var(--shadow-subtle); border-bottom: 1px solid var(--border-light); }
+        .header-container { max-width: 64rem; margin: 0 auto; padding: 0 1rem; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; height: 4rem; }
 
-        .header-container {
-            max-width: 64rem;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
+        .logo-container { display: flex; align-items: center; }
+        .logo-icon { width: 2rem; height: 2rem; color: var(--primary); margin-right: 0.75rem; }
+        .logo-text { font-size: 1.25rem; font-weight: 700; color: var(--primary); }
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 4rem;
-        }
+        .nav-desktop { display: none; align-items: center; gap: 2rem; }
+        .nav-link-active { color: var(--primary); font-weight: 500; text-decoration: none; }
+        .nav-link { color: var(--text-secondary); text-decoration: none; transition: color 0.2s ease; }
+        .nav-link:hover { color: var(--primary); }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
+        .mobile-menu-btn { display: block; padding: 0.5rem; border-radius: 0.5rem; border: none; background: none; cursor: pointer; transition: background-color 0.2s ease; }
+        .mobile-menu-btn:hover { background-color: #F1F5F9; }
+        .mobile-menu-icon { width: 1.5rem; height: 1.5rem; color: var(--text-primary); }
 
-        .logo-icon {
-            width: 2rem;
-            height: 2rem;
-            color: var(--primary);
-            margin-right: 0.75rem;
-        }
+        .mobile-menu { display: none; padding: 0.5rem 1rem 0.75rem; background-color: var(--surface); border-top: 1px solid var(--border-light); }
+        .mobile-menu.active { display: block; }
+        .mobile-menu-item { display: block; padding: 0.5rem 0.75rem; text-decoration: none; transition: color 0.2s ease; }
+        .mobile-menu-item.active { color: var(--primary); font-weight: 500; }
+        .mobile-menu-item:not(.active) { color: var(--text-secondary); }
+        .mobile-menu-item:hover { color: var(--primary); }
 
-        .logo-text {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
+        .main-content { flex: 1; display: flex; align-items: center; justify-content: center; padding: 3rem 0; }
+        .content-container { max-width: 32rem; width: 100%; margin: 0 auto; padding: 0 1rem; }
 
-        .nav-desktop {
-            display: none;
-            align-items: center;
-            gap: 2rem;
-        }
+        .main-card { background-color: var(--surface); border-radius: 0.5rem; box-shadow: var(--shadow-card); padding: 2rem; text-align: center; }
+        .main-title { font-size: 1.875rem; font-weight: 700; color: var(--primary); margin-bottom: 1.5rem; }
 
-        .nav-link-active {
-            color: var(--primary);
-            font-weight: 500;
-            text-decoration: none;
-        }
+        .file-input-container { margin-bottom: 2rem; }
+        .file-input { display: block; width: 100%; padding: 1rem 1.5rem; border: 2px dashed rgba(59, 130, 246, 0.3); border-radius: 0.5rem; background-color: rgba(59, 130, 246, 0.05); cursor: pointer; transition: all 0.3s ease; font-family: inherit; }
+        .file-input:hover { border-color: rgba(59, 130, 246, 0.5); background-color: rgba(59, 130, 246, 0.1); }
 
-        .nav-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
+        .submit-button { display: inline-flex; align-items: center; padding: 1rem 2rem; background-color: var(--primary); color: white; font-weight: 500; font-size: 1.125rem; border: none; border-radius: 0.5rem; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .submit-button:hover { background-color: var(--primary-hover); transform: translateY(-1px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .submit-button:active { transform: scale(0.95); }
+        .button-icon { width: 1.5rem; height: 1.5rem; margin-right: 0.5rem; }
 
-        .nav-link:hover {
-            color: var(--primary);
-        }
+        .footer { background-color: var(--surface); border-top: 1px solid var(--border-light); margin-top: auto; }
+        .footer-container { max-width: 64rem; margin: 0 auto; padding: 2rem 1rem; }
+        .footer-content { text-align: center; }
+        .footer-logo { display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+        .footer-logo-icon { width: 1.5rem; height: 1.5rem; color: var(--primary); margin-right: 0.5rem; }
+        .footer-logo-text { font-size: 1.125rem; font-weight: 700; color: var(--primary); }
+        .footer-copyright { color: var(--text-secondary); font-size: 0.875rem; }
 
-        .mobile-menu-btn {
-            display: block;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            border: none;
-            background: none;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        .mobile-menu-btn:hover {
-            background-color: #F1F5F9;
-        }
-
-        .mobile-menu-icon {
-            width: 1.5rem;
-            height: 1.5rem;
-            color: var(--text-primary);
-        }
-
-        .mobile-menu {
-            display: none;
-            padding: 0.5rem 1rem 0.75rem;
-            background-color: var(--surface);
-            border-top: 1px solid var(--border-light);
-        }
-
-        .mobile-menu.active {
-            display: block;
-        }
-
-        .mobile-menu-item {
-            display: block;
-            padding: 0.5rem 0.75rem;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .mobile-menu-item.active {
-            color: var(--primary);
-            font-weight: 500;
-        }
-
-        .mobile-menu-item:not(.active) {
-            color: var(--text-secondary);
-        }
-
-        .mobile-menu-item:hover {
-            color: var(--primary);
-        }
-
-        /* Main Content Styles */
-        .main-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 3rem 0;
-        }
-
-        .content-container {
-            max-width: 32rem;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .main-card {
-            background-color: var(--surface);
-            border-radius: 0.5rem;
-            box-shadow: var(--shadow-card);
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .main-title {
-            font-size: 1.875rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .form-container {
-            margin-top: 2rem;
-        }
-
-        .file-input-container {
-            margin-bottom: 2rem;
-        }
-
-        .file-input {
-            display: block;
-            width: 100%;
-            padding: 1rem 1.5rem;
-            border: 2px dashed rgba(59, 130, 246, 0.3);
-            border-radius: 0.5rem;
-            background-color: rgba(59, 130, 246, 0.05);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-
-        .file-input:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            background-color: rgba(59, 130, 246, 0.1);
-        }
-
-        .submit-button {
-            display: inline-flex;
-            align-items: center;
-            padding: 1rem 2rem;
-            background-color: var(--primary);
-            color: white;
-            font-weight: 500;
-            font-size: 1.125rem;
-            border: none;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        .submit-button:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .submit-button:active {
-            transform: scale(0.95);
-        }
-
-        .button-icon {
-            width: 1.5rem;
-            height: 1.5rem;
-            margin-right: 0.5rem;
-        }
-
-        /* Footer Styles */
-        .footer {
-            background-color: var(--surface);
-            border-top: 1px solid var(--border-light);
-            margin-top: auto;
-        }
-
-        .footer-container {
-            max-width: 64rem;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-
-        .footer-content {
-            text-align: center;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-
-        .footer-logo-icon {
-            width: 1.5rem;
-            height: 1.5rem;
-            color: var(--primary);
-            margin-right: 0.5rem;
-        }
-
-        .footer-logo-text {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .footer-copyright {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-        }
-
-        /* Responsive Design */
-        @media (min-width: 768px) {
-            .header-container,
-            .content-container {
-                padding: 0 1.5rem;
-            }
-
-            .nav-desktop {
-                display: flex;
-            }
-
-            .mobile-menu-btn {
-                display: none;
-            }
-
-            .main-card {
-                padding: 3rem;
-            }
-
-            .main-title {
-                font-size: 2.25rem;
-            }
-
-            .footer-container {
-                padding: 2rem 1.5rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .header-container,
-            .content-container,
-            .footer-container {
-                padding: 0 2rem;
-            }
-        }
-
-        /* Hidden utility */
-        .hidden {
-            display: none !important;
-        }
+        .hidden { display: none !important; }
     </style>
-<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fcharlieim8158back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
 </head>
 <body>
-    <!-- Header Navigation -->
     <header class="header">
         <div class="header-container">
             <div class="header-content">
-                <!-- Logo -->
                 <div class="logo-container">
                     <svg class="logo-icon" viewBox="0 0 32 32" fill="currentColor">
                         <path d="M16 2L20.5 10.5L30 12L22 20L24 30L16 25L8 30L10 20L2 12L11.5 10.5L16 2Z"/>
@@ -331,14 +92,10 @@
                     </svg>
                     <span class="logo-text">Charlie_mx</span>
                 </div>
-
-                <!-- Navigation -->
                 <nav class="nav-desktop">
                     <a href="/static/results_archive.html" class="nav-link-active">Procesador</a>
                     <a href="/static/help_center.html" class="nav-link">Ayuda</a>
                 </nav>
-
-                <!-- Mobile Menu Button -->
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <svg class="mobile-menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -346,31 +103,20 @@
                 </button>
             </div>
         </div>
-
-        <!-- Mobile Menu -->
         <div class="mobile-menu hidden" id="mobileMenu">
             <a href="/static/results_archive.html" class="mobile-menu-item active">Procesador</a>
             <a href="/static/help_center.html" class="mobile-menu-item">Ayuda</a>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="main-content">
         <div class="content-container">
-            <!-- Main Container -->
             <div class="main-card">
-                <h1 class="main-title">
-                    Bienvenido a Charlie_mx.dominio
-                </h1>
-                
-                <!-- Form -->
+                <h1 class="main-title">Bienvenido a Charlie_mx.dominio</h1>
                 <form id="formulario" enctype="multipart/form-data" class="form-container">
-                    <!-- File Input -->
                     <div class="file-input-container">
                         <input type="file" name="file" id="file" accept="image/*" required class="file-input" />
                     </div>
-                    
-                    <!-- Submit Button -->
                     <button type="submit" class="submit-button">
                         <svg class="button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
@@ -382,7 +128,6 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-content">
@@ -399,39 +144,50 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
+        // Toggle menú móvil
         document.getElementById('mobileMenuBtn').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Original user's image processing code
+        // Procesamiento de imágenes
         document.getElementById('formulario').addEventListener('submit', async function (e) {
             e.preventDefault();
-            const formData = new FormData();
             const fileField = document.querySelector('#file');
+            if (!fileField.files[0]) {
+                alert("Por favor, selecciona una imagen primero.");
+                return;
+            }
 
+            const formData = new FormData();
             formData.append('file', fileField.files[0]);
 
-            const response = await fetch('/procesar-imagen-local/', {
-                method: 'POST',
-                body: formData,
-            });
+            const backendUrl = 'https://test-production-37d0.up.railway.app/procesar-imagen-local/';
 
-            if (response.ok) {
-                const blob = await response.blob();
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'imagen_procesada.pdf';
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-            } else {
-                alert("Error al procesar la imagen.");
+            try {
+                const response = await fetch(backendUrl, {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'imagen_procesada.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                    window.URL.revokeObjectURL(url);
+                } else {
+                    const errorData = await response.json().catch(() => ({ detail: `Error ${response.status}` }));
+                    alert(`Error al procesar la imagen: ${errorData.detail}`);
+                }
+            } catch (err) {
+                alert("No se pudo conectar con el servidor: " + err.message);
             }
         });
     </script>
-<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
 </body>
 </html>
