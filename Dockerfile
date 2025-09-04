@@ -1,8 +1,8 @@
 # Imagen base de Python
 FROM python:3.10-slim
 
-# Instala las dependencias del sistema operativo para OpenCV
-RUN apt-get update && apt-get install -y libgl1-mesa-glx
+# Instala las dependencias del sistema operativo para OpenCV Headless
+RUN apt-get update && apt-get install -y libgl1
 
 # Crear directorio de trabajo
 WORKDIR /app
@@ -21,3 +21,4 @@ EXPOSE 8080
 
 # Comando de inicio para producción
 CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "mainAmbosFullTest:app", "--bind", "0.0.0.0:8080"]
+
