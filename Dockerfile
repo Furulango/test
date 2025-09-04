@@ -1,20 +1,23 @@
 # Imagen base de Python
 FROM python:3.10-slim
 
+# Instala las dependencias del sistema operativo para OpenCV
+RUN apt-get update && apt-get install -y libgl1-mesa-glx
+
 # Crear directorio de trabajo
 WORKDIR /app
 
-# Copiar dependencias si las tienes
+# Copiar el archivo de dependencias de Python
 COPY requirements.txt .
 
-# Instalar dependencias
+# Instalar dependencias de Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar el resto de tu código
+# Copiar el resto de tu código de la aplicación
 COPY . .
 
-# Exponer puerto
+# Exponer el puerto en el que correrá la aplicación
 EXPOSE 8080
 
-# Comando de inicio
+# Comando de inicio para producción
 CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "mainAmbosFullTest:app", "--bind", "0.0.0.0:8080"]
