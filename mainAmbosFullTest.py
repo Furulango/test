@@ -287,28 +287,68 @@ async def procesar_imagen_completa(file: UploadFile = File(...)):
 
         pdf = FPDF()
         
-        # Página 1: Segmentación visual de las 3 imágenes
+        # Página 1: Todas las imágenes en una sola página
         pdf.add_page()
         pdf.set_font("Arial", size=16)
         pdf.cell(200, 10, txt="Reporte de Segmentación y Análisis", ln=True, align='C')
-        pdf.ln(10)
+        pdf.ln(5)
         
-        y_position = 30
+        # Configuración de posiciones y tamaños
+        image_width = 90  # Ancho de cada imagen
+        image_height = 60  # Alto de cada imagen
+        start_x = 10
+        current_y = 25
         
-        # Usaremos tercios de la página para las imágenes
-        page_height = 297  # A4 height in mm
-        image_section_height = (page_height - y_position - 10) / 3
+        # Contador de imágenes para organizar la disposición
+        images_added = 0
         
+        # Rostro segmentado
         if rostro_success and os.path.exists(rostro_output_path):
-            pdf.image(rostro_output_path, x=10, y=y_position, w=190)
-            y_position += image_section_height
-
-        if manos_success:
-            if os.path.exists(manos_output_path):
-                pdf.image(manos_output_path, x=10, y=y_position, w=190)
-                y_position += image_section_height
-            if os.path.exists(manos_numeros_output_path):
-                pdf.image(manos_numeros_output_path, x=10, y=y_position, w=190)
+            # Título para la imagen de rostro
+            pdf.set_font("Arial", style='B', size=10)
+            pdf.set_xy(start_x, current_y)
+            pdf.cell(image_width, 5, txt="Rostro Segmentado", ln=False, align='C')
+            
+            # Imagen de rostro
+            pdf.image(rostro_output_path, x=start_x, y=current_y + 5, w=image_width, h=image_height)
+            images_added += 1
+        
+        # Manos segmentadas (lado derecho si hay rostro, sino en la izquierda)
+        if manos_success and os.path.exists(manos_output_path):
+            x_pos = start_x + (image_width + 10) if images_added > 0 else start_x
+            y_pos = current_y if images_added > 0 else current_y
+            
+            # Si ya hay una imagen en la fila, poner al lado; si no, nueva fila
+            if images_added >= 2:
+                y_pos = current_y + image_height + 15
+                x_pos = start_x
+                images_added = 0
+            
+            # Título para la imagen de manos
+            pdf.set_font("Arial", style='B', size=10)
+            pdf.set_xy(x_pos, y_pos)
+            pdf.cell(image_width, 5, txt="Manos Segmentadas", ln=False, align='C')
+            
+            # Imagen de manos
+            pdf.image(manos_output_path, x=x_pos, y=y_pos + 5, w=image_width, h=image_height)
+            images_added += 1
+            
+            # Actualizar current_y para la siguiente imagen
+            if images_added == 1:
+                current_y = y_pos
+        
+        # Manos numeradas
+        if manos_success and os.path.exists(manos_numeros_output_path):
+            x_pos = start_x + (image_width + 10) if images_added == 1 else start_x
+            y_pos = current_y if images_added == 1 else current_y + image_height + 15
+            
+            # Título para la imagen de manos numeradas
+            pdf.set_font("Arial", style='B', size=10)
+            pdf.set_xy(x_pos, y_pos)
+            pdf.cell(image_width, 5, txt="Manos Numeradas", ln=False, align='C')
+            
+            # Imagen de manos numeradas
+            pdf.image(manos_numeros_output_path, x=x_pos, y=y_pos + 5, w=image_width, h=image_height)
 
         # Página 2: Resumen de procesamiento
         pdf.add_page()
